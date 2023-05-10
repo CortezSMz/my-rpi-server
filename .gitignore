@@ -1,13 +1,29 @@
 # Home Assistant
-homeassistant/*
+homeassistant/**/.cloud
+homeassistant/**/.storage
+homeassistant/**/blueprints
+homeassistant/**/deps
+homeassistant/**/tts
+secrets.yaml
 
 # Pi-hole - Unbound
-pihole-unbound/*/*
+**/etc-dnsmasq.d/*
+!**/*pihole-custom-cname.conf
+**/etc-pihole/*.*
+!**/migration_backup
+!adlists.list
+!custom.list
+setupVars.conf*
+logrotate
+**/etc-unbound/*
 
 # Portainer
-portainer/*/*
+**/portainer/*
 
 
 # Global
 .env
 !.gitkeep
+*.log*
+*.db*
+*.key*

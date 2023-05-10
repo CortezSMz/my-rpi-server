@@ -1,0 +1,29 @@
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+switch:
+  - platform: remote_rpi_gpio
+    host: pi
+    ports:
+      17: RPi Fan
+
+panel_iframe:
+  portainer:
+    title: Portainer
+    url: "http://portainer.pi:8999/#!/2/docker/containers"
+    icon: mdi:docker
+    require_admin: true
+
