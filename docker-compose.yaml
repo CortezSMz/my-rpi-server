@@ -1,0 +1,52 @@
+version: '3.0'
+
+services:
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce:latest
+    restart: unless-stopped
+    ports:
+      - "8999:9000/tcp"
+      - "9442:9443/tcp"
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - $PWD/portainer/data:/data:rw
+  pihole:
+    container_name: pihole-unbound
+    image: rlabinc/pihole-unbound:latest
+    hostname: ${HOSTNAME}
+    domainname: ${DOMAIN_NAME}
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 80:80/tcp
+    environment:
+      - TZ=${TZ}
+      - WEBPASSWORD=${WEBPASSWORD}
+      - WEBTHEME=${WEBTHEME:-default-dark}
+      - FTLCONF_LOCAL_IPV4=${FTLCONF_LOCAL_IPV4}
+      - REV_SERVER=${REV_SERVER:-false}
+      - REV_SERVER_TARGET=${REV_SERVER_TARGET}
+      - REV_SERVER_DOMAIN=${REV_SERVER_DOMAIN}
+      - REV_SERVER_CIDR=${REV_SERVER_CIDR}
+      - PIHOLE_DNS_=127.0.0.1#5335
+      - DNSSEC="true"
+      - DNSMASQ_LISTENING=single
+    volumes:
+      - $PWD/pihole-unbound/etc-pihole:/etc/pihole:rw
+      - $PWD/pihole-unbound/etc-pihole/resolv.conf:/etc/resolv.conf:rw
+      - $PWD/pihole-unbound/etc-dnsmasq.d:/etc/dnsmasq.d:rw
+      - $PWD/pihole-unbound/etc-unbound:/opt/unbound/etc/unbound:rw
+    restart: always
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:latest"
+    volumes:
+      - $PWD/homeassistant/config:/config
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    privileged: true
+    network_mode: host

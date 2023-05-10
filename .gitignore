@@ -1,0 +1,13 @@
+# Home Assistant
+homeassistant/*
+
+# Pi-hole - Unbound
+pihole-unbound/*/*
+
+# Portainer
+portainer/*/*
+
+
+# Global
+.env
+!.gitkeep
