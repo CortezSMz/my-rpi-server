@@ -22,7 +22,7 @@ services:
     ports:
       - 53:53/tcp
       - 53:53/udp
-      - 80:80/tcp
+      - 8080:80/tcp
     environment:
       - TZ=${TZ}
       - WEBPASSWORD=${WEBPASSWORD}
@@ -54,8 +54,8 @@ services:
     container_name: nodered
     image: nodered/node-red:latest
     restart: unless-stopped
-    ports:
-      - "1880:1880/tcp"
+    user: root
+    network_mode: host
     environment:
       - TZ=${TZ}
     volumes:

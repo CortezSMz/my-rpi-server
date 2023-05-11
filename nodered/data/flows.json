@@ -8,6 +8,14 @@
         "env": []
     },
     {
+        "id": "4cae43b4fadc94bc",
+        "type": "tab",
+        "label": "Alexa",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "6b6eb5bfb1ac6034",
         "type": "server",
         "name": "Home Assistant",
@@ -214,5 +222,51 @@
             ]
         ],
         "info": "Don't want it to turn on at night because it makes too much noise."
+    },
+    {
+        "id": "a19274843c6caad3",
+        "type": "amazon-echo-hub",
+        "z": "4cae43b4fadc94bc",
+        "port": "80",
+        "processinput": "3",
+        "discovery": true,
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "23df484e6afc4f9a"
+            ]
+        ]
+    },
+    {
+        "id": "23df484e6afc4f9a",
+        "type": "amazon-echo-device",
+        "z": "4cae43b4fadc94bc",
+        "name": "Teste",
+        "topic": "testetopic",
+        "x": 330,
+        "y": 60,
+        "wires": [
+            [
+                "996c8d605ca95b16"
+            ]
+        ]
+    },
+    {
+        "id": "996c8d605ca95b16",
+        "type": "debug",
+        "z": "4cae43b4fadc94bc",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 60,
+        "wires": []
     }
 ]
