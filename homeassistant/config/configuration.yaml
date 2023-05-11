@@ -14,6 +14,14 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+sensor:
+  - platform: command_line
+    name: CPU Temp
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    scan_interval: 5
+    unit_of_measurement: "°C"
+    value_template: "{{ value | multiply(0.001) | round(1) }}"
+
 switch:
   - platform: remote_rpi_gpio
     host: pi
@@ -25,5 +33,10 @@ panel_iframe:
     title: Portainer
     url: "http://portainer.pi:8999/#!/2/docker/containers"
     icon: mdi:docker
+    require_admin: true
+  nodered:
+    title: Node-RED
+    url: "http://nodered.pi:1880"
+    icon: mdi:lan
     require_admin: true
 

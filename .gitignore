@@ -20,6 +20,11 @@ logrotate
 # Portainer
 **/portainer/*
 
+# Node-RED
+**/nodered/data/*
+!**/nodered/data/*flows.json*
+!**/nodered/data/package*.json
+!**/nodered/data/settings.json
 
 # Global
 .env
@@ -27,3 +32,6 @@ logrotate
 *.log*
 *.db*
 *.key*
+node_modules/
+lib/
+.npm/

@@ -50,3 +50,15 @@ services:
     restart: unless-stopped
     privileged: true
     network_mode: host
+  nodered:
+    container_name: nodered
+    image: nodered/node-red:latest
+    restart: unless-stopped
+    ports:
+      - "1880:1880/tcp"
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - $PWD/nodered/data:/data
+    depends_on:
+      - homeassistant
