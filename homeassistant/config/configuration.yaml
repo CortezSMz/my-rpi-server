@@ -181,3 +181,9 @@ alexa:
     locale: en-US
     endpoint: https://api.amazonalexa.com/v3/events
 
+alexa_media:
+  accounts:
+    - email: !secret amazon_user
+      password: !secret amazon_password
+      url: amazon.com.br
+

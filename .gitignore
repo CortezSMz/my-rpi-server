@@ -4,6 +4,7 @@ homeassistant/**/.storage
 homeassistant/**/blueprints
 homeassistant/**/deps
 homeassistant/**/tts
+homeassistant/**/custom_components
 secrets.yaml
 
 # Pi-hole - Unbound
