@@ -47,3 +47,8 @@ http:
   ip_ban_enabled: true
   login_attempts_threshold: 3
 
+alexa:
+  smart_home:
+    locale: en-US
+    endpoint: https://api.amazonalexa.com/v3/events
+
