@@ -40,3 +40,10 @@ panel_iframe:
     icon: mdi:lan
     require_admin: true
 
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 127.0.0.1
+  ip_ban_enabled: true
+  login_attempts_threshold: 3
+
