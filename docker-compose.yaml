@@ -50,6 +50,8 @@ services:
     restart: unless-stopped
     privileged: true
     network_mode: host
+    depends_on:
+      - mosquitto
   nodered:
     container_name: nodered
     image: nodered/node-red:latest
@@ -62,3 +64,18 @@ services:
       - $PWD/nodered/data:/data
     depends_on:
       - homeassistant
+      - mosquitto
+  mosquitto:
+    container_name: mosquitto
+    image: eclipse-mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883/tcp"
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - $PWD/mosquitto/config:/mosquitto/config
+      - $PWD/mosquitto/data:/mosquitto/data
+      - $PWD/mosquitto/log:/mosquitto/log
+    stdin_open: true
+    tty: true

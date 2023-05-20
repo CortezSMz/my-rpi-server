@@ -27,6 +27,11 @@ logrotate
 !**/nodered/data/package*.json
 !**/nodered/data/settings.json
 
+# Mosquitto
+**/mosquitto/data/*
+**/mosquitto/log/*
+**/mosquitto/config/mqttuser
+
 # Global
 .env
 !.gitkeep

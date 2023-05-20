@@ -16,6 +16,14 @@
         "env": []
     },
     {
+        "id": "0c1e436aee7dd66b",
+        "type": "tab",
+        "label": "MQTT",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "6b6eb5bfb1ac6034",
         "type": "server",
         "name": "Home Assistant",
@@ -37,6 +45,33 @@
         "statusHourCycle": "default",
         "statusTimeFormat": "h:m",
         "enableGlobalContextStore": false
+    },
+    {
+        "id": "e206980f6647a541",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mosquitto.pi",
+        "port": "1883",
+        "clientid": "nodered",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
     },
     {
         "id": "bfa70dfa69d08719",
@@ -235,5 +270,42 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "2d87485c21998f29",
+        "type": "mqtt in",
+        "z": "0c1e436aee7dd66b",
+        "name": "",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "e206980f6647a541",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 160,
+        "wires": [
+            [
+                "027b59e98b95d6ba"
+            ]
+        ]
+    },
+    {
+        "id": "027b59e98b95d6ba",
+        "type": "debug",
+        "z": "0c1e436aee7dd66b",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 160,
+        "wires": []
     }
 ]
