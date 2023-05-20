@@ -143,7 +143,7 @@
                 "value": ""
             }
         ],
-        "entityidfilter": "sensor.cpu_temp",
+        "entityidfilter": "sensor.rpi_cpu_temperature",
         "entityidfiltertype": "exact",
         "outputinitially": false,
         "state_type": "num",
