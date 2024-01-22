@@ -1,0 +1,16 @@
+version: '3.0'
+
+services:
+  nodered:
+    container_name: nodered
+    image: nodered/node-red:latest
+    restart: unless-stopped
+    user: root
+    network_mode: host
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - $PWD/nodered/data:/data
+    depends_on:
+      - homeassistant
+      - mosquitto

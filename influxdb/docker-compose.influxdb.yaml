@@ -1,0 +1,24 @@
+version: '3.0'
+
+services:
+  influxdb:
+    container_name: influxdb
+    image: influxdb:latest
+    restart: unless-stopped
+    volumes:
+      - $PWD/influxdb:/var/lib/influxdb2:rw
+    ports:
+      - 8086:8086
+
+  telegraf:
+    image: telegraf:latest
+    container_name: telegraf
+    restart: unless-stopped
+    user: telegraf:992
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - $PWD/influxdb/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - $PWD/influxdb/telegraf:/tmp:rw
+    depends_on:
+      - influxdb

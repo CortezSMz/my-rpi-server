@@ -1,38 +1,30 @@
-# Home Assistant
-homeassistant/**/.cloud
-homeassistant/**/.storage
-homeassistant/**/blueprints
-homeassistant/**/deps
-homeassistant/**/tts
-homeassistant/**/custom_components
-secrets.yaml
+# Grafana
+**/grafana/*
 
-# Pi-hole - Unbound
-**/etc-dnsmasq.d/*
-!**/*pihole-custom-cname.conf
-**/etc-pihole/*.*
-!**/migration_backup
-!adlists.list
-!custom.list
-setupVars.conf*
-logrotate
-**/etc-unbound/*
+# Home Assistant
+**/homeassistant/config/
+
+# Influxdb
+**/influxdb/*
+
+# Mosquitto
+**/mosquitto/*
+
+# Node-RED
+**/nodered/*
+
+# Octoprint
+**/octoprint/*
+!**/octoprint/mjpg-streamer/
 
 # Portainer
 **/portainer/*
 
-# Node-RED
-**/nodered/data/*
-!**/nodered/data/*flows.json*
-!**/nodered/data/package*.json
-!**/nodered/data/settings.json
-
-# Mosquitto
-**/mosquitto/data/*
-**/mosquitto/log/*
-**/mosquitto/config/mqttuser
+# Stremio
+**/stremio/server/*
 
 # Global
+!**/docker-compose.*.yaml
 .env
 !.gitkeep
 *.log*

@@ -1,0 +1,9 @@
+version: '3.0'
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
+          ip_range: 172.18.0.0/24
+          gateway: 172.18.0.254

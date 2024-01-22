@@ -1,0 +1,14 @@
+version: '3.0'
+
+services:
+  stremio:
+    container_name: stremio
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+      - '11470:11470'
+    volumes:
+      - $PWD/stremio/server:/root/.stremio-server:rw

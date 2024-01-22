@@ -1,0 +1,15 @@
+version: '3.0'
+
+services:
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce:latest
+    restart: always
+    ports:
+      - "9000:9000/tcp"
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - $PWD/portainer/data:/data:rw

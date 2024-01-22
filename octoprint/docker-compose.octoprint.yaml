@@ -1,0 +1,22 @@
+version: '3.0'
+
+services:
+  octoprint:
+    container_name: octoprint
+    image: octoprint/octoprint
+    restart: unless-stopped
+    volumes:
+      - $PWD/octoprint/octoprint:/octoprint
+
+  octocam:
+    privileged: true
+    container_name: octocam
+    restart: unless-stopped
+    build:
+      context: ./mjpg-streamer
+      dockerfile: Dockerfile
+    environment:
+      - INPUT_FLAGS=-r 1920x1080 -f 30
+      - OUTPUT_FLAGS=-w ./www
+    volumes:
+      - /run/udev:/run/udev:ro

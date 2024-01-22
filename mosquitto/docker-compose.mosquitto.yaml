@@ -1,0 +1,15 @@
+version: '3.0'
+
+services:
+  mosquitto:
+    container_name: mosquitto
+    image: eclipse-mosquitto
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - $PWD/mosquitto/config:/mosquitto/config
+      - $PWD/mosquitto/data:/mosquitto/data
+      - $PWD/mosquitto/log:/mosquitto/log
+    stdin_open: true
+    tty: true

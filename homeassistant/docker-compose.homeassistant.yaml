@@ -1,0 +1,15 @@
+version: '3.0'
+
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:latest"
+    restart: unless-stopped
+    volumes:
+      - $PWD/homeassistant/config:/config
+      - /etc/localtime:/etc/localtime:ro
+    privileged: true
+    depends_on:
+      - mosquitto
+      - influxdb
+    network_mode: host
