@@ -5,6 +5,8 @@ services:
     container_name: octoprint
     image: octoprint/octoprint
     restart: unless-stopped
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
     volumes:
       - $PWD/octoprint/octoprint:/octoprint
 

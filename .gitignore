@@ -9,6 +9,7 @@
 
 # Mosquitto
 **/mosquitto/*
+!**/mosquitto/publish.sh
 
 # Node-RED
 **/nodered/*

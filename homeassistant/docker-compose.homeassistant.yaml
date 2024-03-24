@@ -13,3 +13,5 @@ services:
       - mosquitto
       - influxdb
     network_mode: host
+    devices:
+      - /dev/ttyUSB1:/dev/ttyUSB1
