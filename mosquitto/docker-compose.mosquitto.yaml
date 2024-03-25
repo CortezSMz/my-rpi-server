@@ -15,6 +15,9 @@ services:
       - $PWD/mosquitto/log:/mosquitto/log
     stdin_open: true
     tty: true
+    networks:
+      mosquitto:
+        ipv4_address: 172.19.0.1
 
   zigbee2mqtt:
     container_name: zigbee2mqtt
@@ -29,3 +32,5 @@ services:
       - TZ=${TZ}
     devices:
       - /dev/ttyUSB1:/dev/ttyUSB1
+    networks:
+      - mosquitto

@@ -7,3 +7,9 @@ networks:
         - subnet: 172.18.0.0/16
           ip_range: 172.18.0.0/24
           gateway: 172.18.0.254
+  mosquitto:
+    ipam:
+      config:
+        - subnet: 172.19.0.0/16
+          ip_range: 172.19.0.0/24
+          gateway: 172.19.0.254
