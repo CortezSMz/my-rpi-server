@@ -31,6 +31,6 @@ services:
     environment:
       - TZ=${TZ}
     devices:
-      - /dev/ttyUSB1:/dev/ttyUSB1
+      - /dev/ttyZGB:/dev/ttyUSB0
     networks:
       - mosquitto

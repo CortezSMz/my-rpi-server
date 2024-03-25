@@ -6,7 +6,7 @@ services:
     image: octoprint/octoprint
     restart: unless-stopped
     devices:
-      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/ttyE3V2:/dev/ttyUSB0
     volumes:
       - $PWD/octoprint/octoprint:/octoprint
 
