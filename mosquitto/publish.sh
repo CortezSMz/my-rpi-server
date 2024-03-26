@@ -11,7 +11,7 @@ publish() {
 
 while [ true ]
 do
-    publish uptime "`uptime | awk -F "up|\," '{print $2}' | sed 's/\s//g'`"
+    publish uptime `expr $(date +%s%N) - $(date --date="$(uptime -s)" +%s%N) | awk '{printf "%.2f", $1 / 60000000000}'`
 
     publish cpu/temperature `cat /sys/class/thermal/thermal_zone0/temp`
 
@@ -28,12 +28,10 @@ do
     publish memory/total `free -m | awk '/^Mem:/ {print $2}'`
     publish memory/used `free -m | awk '/^Mem:/ {print $3}'`
     publish memory/available `free -m | awk '/^Mem:/ {print $7}'`
-    publish memory/used_percentage `free | awk '/^Mem:/ {printf "%.1f", ($3/$2) * 100}'`
 
     publish disk/total `df -k | awk '/^\/dev\/sda2/ {total = $2} END {print total}'`
     publish disk/used `df -k | awk '/^\/dev\/sda2/ {used = $3} END {print used}'`
     publish disk/available `df -k | awk '/^\/dev\/sda2/ {available = $4} END {print available}'`
-    publish disk/used_percentage `df -k | awk '/^\/dev\/sda2/ {used_percentage = $5} END {print used_percentage}' | sed 's/%//'`
 
     sleep 5
 done
